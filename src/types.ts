@@ -1,3 +1,5 @@
 export interface Options {
-  // define your plugin options here
+  path: string
+  limit?: number
+  customFilter?: (fileName: string) => boolean
 }
