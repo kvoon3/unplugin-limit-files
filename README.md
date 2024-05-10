@@ -53,7 +53,7 @@ export default {
 <br></details>
 
 <details>
-<summary>rspack</summary><br>
+<summary>Rspack</summary><br>
 
 ```ts
 // rspack.config.js
