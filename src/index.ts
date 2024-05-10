@@ -2,7 +2,7 @@ import { rm } from 'node:fs/promises'
 import type { UnpluginFactory } from 'unplugin'
 import { createUnplugin } from 'unplugin'
 import type { Entry } from 'fast-glob'
-import { glob } from 'fast-glob'
+import fg from 'fast-glob'
 import type { Options } from './types'
 import { isTimeAgo } from './utils/time'
 
@@ -15,7 +15,7 @@ export const unpluginFactory: UnpluginFactory<Options> = options => ({
       customFilter,
     } = options
 
-    const files = await glob(filePattern, {
+    const files = await fg.glob(filePattern, {
       stats: true,
     })
 
