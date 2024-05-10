@@ -1,5 +1,4 @@
 import { rm } from 'node:fs/promises'
-import type { Dirent, Stats } from 'node:fs'
 import type { UnpluginFactory } from 'unplugin'
 import { createUnplugin } from 'unplugin'
 import type { Entry } from 'fast-glob'
