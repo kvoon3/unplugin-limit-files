@@ -13,7 +13,8 @@ pnpm i -D unplugin-limit-files
 
 ```ts
 // vite.config.ts
-import LimitFiles from 'unplugin-vue-router/vite'
+import LimitFiles from 'unplugin-limit-files/vite'
+import { TimeUnit } from 'unplugin-limit-files/types'
 
 export default defineConfig({
   plugins: [
@@ -60,7 +61,7 @@ export default {
 module.exports = {
   /* ... */
   plugins: [
-    require('unplugin-vue-router/rspack')({
+    require('unplugin-limit-files/rspack')({
       /* options */
     }),
   ],
