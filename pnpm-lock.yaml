@@ -21,6 +21,9 @@ importers:
       '@antfu/eslint-config':
         specifier: ^2.2.2
         version: 2.2.2(eslint@8.55.0)(typescript@5.3.2)(vitest@0.34.6)
+      '@antfu/utils':
+        specifier: ^0.7.8
+        version: 0.7.8
       '@nuxt/kit':
         specifier: ^3.8.2
         version: 3.8.2(rollup@4.6.1)
@@ -171,6 +174,10 @@ packages:
 
   /@antfu/utils@0.7.6:
     resolution: {integrity: sha512-pvFiLP2BeOKA/ZOS6jxx4XhKzdVLHDhGlFEaZ2flWWYf2xOqVniqpk38I04DFRyz+L0ASggl7SkItTc+ZLju4w==}
+    dev: true
+
+  /@antfu/utils@0.7.8:
+    resolution: {integrity: sha512-rWQkqXRESdjXtc+7NRfK9lASQjpXJu1ayp7qi1d23zZorY+wBHVLHHoVcMsEnkqEBWTFqbztO7/QdJFzyEcLTg==}
     dev: true
 
   /@babel/code-frame@7.22.10:

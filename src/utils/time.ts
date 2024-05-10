@@ -1,19 +1,31 @@
-export enum TimeUnit {
-  MONTH = 2592000000,
-  DAY = 86400000,
-  MINUTE = 60000,
+import { objectEntries } from '@antfu/utils'
+
+export const timeMap = {
+  month: 2592000000,
+  weekend: 604800000,
+  day: 86400000,
+  hour: 3600000,
+  minute: 60000,
 }
 
-export function isTimeAgo(date: Date | number, opt: { now?: Date, unit: TimeUnit, times?: number }) {
+export function isTimeAgo(date: Date | number, opt?: { baseTime?: Date, gap?: number }) {
   const time = typeof date === 'number' ? date : date.getTime()
 
   const {
-    now = new Date(),
-    unit,
-    times = 1,
-  } = opt
+    baseTime = new Date(),
+    gap = 0,
+  } = opt || {}
 
-  const diff = now.getTime() - time
+  return baseTime.getTime() - time > gap
+}
 
-  return diff > unit * (times)
+export function countTime(opt: {
+  month?: number
+  weekend?: number
+  day?: number
+  minute?: number
+}) {
+  return objectEntries(opt).reduce((count, [key, val]) => {
+    return count + (timeMap[key] || 1) * (val || 1)
+  }, 0)
 }

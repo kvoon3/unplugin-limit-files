@@ -3,8 +3,9 @@ import type { UnpluginFactory } from 'unplugin'
 import { createUnplugin } from 'unplugin'
 import type { Entry } from 'fast-glob'
 import fg from 'fast-glob'
+import { objectEntries } from '@antfu/utils'
 import type { Options } from './types'
-import { isTimeAgo } from './utils/time'
+import { countTime, isTimeAgo, timeMap } from './utils/time'
 
 export const unpluginFactory: UnpluginFactory<Options> = options => ({
   name: 'unplugin-limit-files',
@@ -47,8 +48,9 @@ export const unpluginFactory: UnpluginFactory<Options> = options => ({
       }, [] as Entry[])
       // limit date
       .filter((file) => {
-        if (limit && file.stats) {
+        if (limit?.time && file.stats) {
           let time = file.stats.birthtimeMs
+
           if (limit.latestTime === 'access')
             time = file.stats.atimeMs
           else if (limit.latestTime === 'change')
@@ -59,8 +61,8 @@ export const unpluginFactory: UnpluginFactory<Options> = options => ({
             time = file.stats.mtimeMs
 
           return isTimeAgo(time, {
-            unit: limit.date.unit,
-            times: limit.date.times,
+            baseTime: limit.baseTime,
+            gap: countTime(limit.time),
           })
         }
 
