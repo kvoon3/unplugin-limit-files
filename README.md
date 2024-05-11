@@ -22,9 +22,11 @@ export default defineConfig({
       filePattern: ['./pkg/*.zip'],
       limit: {
         latestTime: 'create',
-        date: {
-          unit: TimeUnit.MINUTE,
-          times: 60,
+        time: {
+          month: 1,
+          weekend: 2,
+          day: 5,
+          minute: 30,
         },
         num: 3,
       },
